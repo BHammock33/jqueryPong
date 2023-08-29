@@ -87,9 +87,9 @@ $(document).ready(function () {
         var winner = "";
         if (player.score === 3 || comp.score === 3) {
             if (player.score === 3) {
-                winner = "oyuncu";
+                winner = "player";
             } else {
-                winner = "bilgisayar"
+                winner = "computer"
             }
             clearInterval(gameLoop);
             $(document).off();
@@ -98,7 +98,7 @@ $(document).ready(function () {
             gameOver.css({
                 display: "flex"
             });
-            gameOver.html("oyun bitti kazanan " + winner);
+            gameOver.html("the winner is " + winner);
         }
     }
 
