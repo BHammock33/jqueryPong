@@ -3,7 +3,7 @@ $(document).ready(function () {
     var playerDom = $('#player');
     var compDom = $('#comp');
     var ballDom = $('#ball');
-    var userScore = $('user-score');
+    var userScore = $('#user-score');
     var compScore = $('#comp-score');
     var gameOver = $('#gameover');
 
