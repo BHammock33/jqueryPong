@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap" rel = "stylesheet">
+    <link rel ="stylesheet" href="index.css">
+    <title>Play Some Pong</title>
+</head>
+<body>
+    <div id = "board">
+        <div id="status">
+            <div class ="info-box">Player</div>
+            <div class ="info-box"><span id="user-score">0</span>&nbsp-&nbsp<span id="comp-score">0</span></div>
+            <div class ="info-box">PC</div>
+        </div> 
+        <div id="arena">
+            <div class="arena-member" id ="player"></div>
+            <div class="arena-member" id ="ball"></div>
+            <div class="arena-member" id ="cubuk"></div>
+            <div class="arena-member" id ="comp"></div>
+            <div class="arena-member" id ="gameover"> gameover </div>
+        </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="./index.js"></script>
+</html>
