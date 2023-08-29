@@ -30,7 +30,7 @@ $(document).ready(function () {
             }
         }
         this.draw = function () {
-            element.css({
+            e.css({
                 width: this.radius,
                 height: this.radius,
                 borderRadius: this.radius,
@@ -42,24 +42,24 @@ $(document).ready(function () {
         }
     }
 
-    var Computer = function (element) {
-        this.x = arena.innerWidth() - element.innerWidth();
-        this.y = (arena.innerHeight() / 2) - (element.innerHeight() / 2);
+    var Comp = function (e) {
+        this.x = arena.innerWidth() - e.innerWidth();
+        this.y = (arena.innerHeight() / 2) - (e.innerHeight() / 2);
         this.score = 0;
         this.draw = function () {
-            element.css({
+            e.css({
                 top: this.y,
                 left: this.x,
             });
         }
     }
 
-    var Player = function (element) {
+    var Player = function (e) {
         this.x = 0;
-        this.y = (arena.innerHeight() / 2) - (element.innerHeight() / 2);
+        this.y = (arena.innerHeight() / 2) - (e.innerHeight() / 2);
         this.score = 0;
         this.draw = function () {
-            element.css({
+            e.css({
                 top: this.y,
                 left: this.x
             });
@@ -83,9 +83,9 @@ $(document).ready(function () {
         }
     }
 
-    var isGameOver = function (player, computer) {
+    var isGameOver = function (player, comp) {
         var winner = "";
-        if (player.score === 3 || computer.score === 3) {
+        if (player.score === 3 || comp.score === 3) {
             if (player.score === 3) {
                 winner = "oyuncu";
             } else {
@@ -94,7 +94,7 @@ $(document).ready(function () {
             clearInterval(gameLoop);
             $(document).off();
             playerDom.hide();
-            computerDom.hide();
+            compDom.hide();
             gameOver.css({
                 display: "flex"
             });
@@ -103,18 +103,18 @@ $(document).ready(function () {
     }
 
     var player = new Player(playerDom);
-    var computer = new Computer(computerDom);
+    var comp = new Comp(compDom);
     var ball = new Ball(ballDom);
 
-    computer.draw();
+    comp.draw();
     player.draw();
     ball.draw();
 
     var gameLoop = setInterval(function () {
-        isGameOver(player, computer);
-        computer.y += (ball.y - (computer.y + (computerDom.innerHeight() / 2))) * 0.2;
-        computer.draw();
-        let user = (ball.x < arena.innerWidth() / 2) ? player : computer;
+        isGameOver(player, comp);
+        comp.y += (ball.y - (comp.y + (compDom.innerHeight() / 2))) * 0.2;
+        comp.draw();
+        let user = (ball.x < arena.innerWidth() / 2) ? player : comp;
         var col = new Collision(ball, user);
         if (col.check()) {
             let collidePoint = (ball.y - (player.y + (playerDom.innerHeight() / 2)));
@@ -130,7 +130,7 @@ $(document).ready(function () {
         ball.draw();
         if (ball.x - ball.radius < 0) {
             computer.score++;
-            computerScore.html(computer.score);
+            compScore.html(comp.score);
             ball.reset();
         }
         if (ball.x + ball.radius > arena.innerWidth()) {
