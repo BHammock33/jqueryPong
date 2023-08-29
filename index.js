@@ -1,11 +1,11 @@
 $(document).ready(function () {
-    var arena = $("#arena");
-    var playerDom = $("#player");
-    var compDom = $("#comp");
-    var ballDom = $("#ball");
-    var userScore = $("#user-score");
-    var compScore = $("#comp-score");
-    var gameOver = $("#gameover");
+    var arena = $('#arena');
+    var playerDom = $('#player');
+    var compDom = $('#comp');
+    var ballDom = $('#ball');
+    var userScore = $('user-score');
+    var compScore = $('#comp-score');
+    var gameOver = $('#gameover');
 
     var Ball = function (e) {
         this.x = arena.innerWidth() / 2 - ballDom.innerWidth();
@@ -129,7 +129,7 @@ $(document).ready(function () {
         ball.edges();
         ball.draw();
         if (ball.x - ball.radius < 0) {
-            computer.score++;
+            comp.score++;
             compScore.html(comp.score);
             ball.reset();
         }
