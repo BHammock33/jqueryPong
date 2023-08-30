@@ -58,14 +58,6 @@ $(document).ready(function () {
         this.x = 0;
         this.y = (arena.innerHeight() / 2) - (e.innerHeight() / 2);
         this.score = 0;
-        this.edges = function () {
-            if (this.y <= 0) {
-                this.y = 1;
-            }
-            if(this.y >= 300){
-                this.y = 300;
-            }
-        }
         this.draw = function () {
             e.css({
                 top: this.y,
@@ -79,6 +71,12 @@ $(document).ready(function () {
             this.ball = ball;
             this.player = player;
             this.player.top = this.player.y;
+            if(this.player.top >= 300){
+                this.player.top = 300;
+            }
+            if(this.player.top <=0){
+                this.player.top = 0;
+            }
             this.player.bottom = this.player.y + 100;
             this.player.left = this.player.x;
             this.player.right = this.player.x + 15;
