@@ -6,6 +6,7 @@ $(document).ready(function () {
     var userScore = $('#user-score');
     var compScore = $('#comp-score');
     var gameOver = $('#gameover');
+    var resetBtn = $('#reset');
 
     var Ball = function (e) {
         this.x = arena.innerWidth() / 2 - ballDom.innerWidth();
@@ -106,10 +107,12 @@ $(document).ready(function () {
             gameOver.css({
                 display: "flex"
             });
-            gameOver.html("the winner is " + winner);
+            gameOver.html("the " + winner + " wins!");
+            resetBtn.show();
+            resetBtn.on('click', resetClick());
         }
     }
-
+    
     var player = new Player(playerDom);
     var comp = new Comp(compDom);
     var ball = new Ball(ballDom);
@@ -147,6 +150,11 @@ $(document).ready(function () {
             ball.reset();
         }
     }, 25);
+    var resetClick = function(){
+        player.score === 0;
+        comp.score === 0;
+        gameLoop();
+    }
 
     $(document).on('mousemove', function (e) {
         player.y = e.clientY - arena.innerHeight() + playerDom.innerHeight();

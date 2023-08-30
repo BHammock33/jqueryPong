@@ -59,3 +59,8 @@ body{
     justify-content: center;
     align-items: center;
 }
+#reset{
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
