@@ -58,11 +58,27 @@ $(document).ready(function () {
         this.x = 0;
         this.y = (arena.innerHeight() / 2) - (e.innerHeight() / 2);
         this.score = 0;
-        this.draw = function () {
-            e.css({
-                top: this.y,
-                left: this.x
-            });
+        if(this.y <= 0){
+            this.draw = function (){
+                e.css({
+                    top: 0,
+                    left: this.x
+                });
+            } 
+        }else if(this.y >= 300){
+            this.draw = function (){
+                e.css({
+                    top: 300,
+                    left: this.x
+                });
+            }
+        } else {
+            this.draw = function () {
+                e.css({
+                    top: this.y,
+                    left: this.x
+                });
+            }
         }
     }
 
@@ -142,13 +158,7 @@ $(document).ready(function () {
 
     $(document).on('mousemove', function (e) {
         player.y = e.clientY - arena.innerHeight() + playerDom.innerHeight();
-        if(player.y > 0){
-            player.draw();
-        } else if (player.y < 300){
-            player.draw();
-        } else {
-            player.velY * -1;
-        }  
+        player.draw();
     });
 
 });
