@@ -58,27 +58,19 @@ $(document).ready(function () {
         this.x = 0;
         this.y = (arena.innerHeight() / 2) - (e.innerHeight() / 2);
         this.score = 0;
-        if(this.y <= 0){
-            this.draw = function (){
-                e.css({
-                    top: 0,
-                    left: this.x
-                });
-            } 
-        }else if(this.y >= 300){
-            this.draw = function (){
-                e.css({
-                    top: 300,
-                    left: this.x
-                });
+        this.edges = function () {
+            if (this.y <= 0) {
+                this.y = 1;
             }
-        } else {
-            this.draw = function () {
-                e.css({
-                    top: this.y,
-                    left: this.x
-                });
+            if(this.y >= 300){
+                this.y = 300;
             }
+        }
+        this.draw = function () {
+            e.css({
+                top: this.y,
+                left: this.x
+            });
         }
     }
 
