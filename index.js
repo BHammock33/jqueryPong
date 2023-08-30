@@ -142,7 +142,13 @@ $(document).ready(function () {
 
     $(document).on('mousemove', function (e) {
         player.y = e.clientY - arena.innerHeight() + playerDom.innerHeight();
-        player.draw();
+        if(player.y > 0){
+            player.draw();
+        } else if (player.y < 300){
+            player.draw();
+        } else {
+            player.velY * -1;
+        }  
     });
 
 });
