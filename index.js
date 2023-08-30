@@ -73,9 +73,11 @@ $(document).ready(function () {
             this.player.top = this.player.y;
             if(this.player.top >= 300){
                 this.player.top = 300;
+                this.player.y = 300;
             }
             if(this.player.top <=0){
                 this.player.top = 0;
+                this.player.y = 0;
             }
             this.player.bottom = this.player.y + 100;
             this.player.left = this.player.x;
@@ -148,7 +150,16 @@ $(document).ready(function () {
 
     $(document).on('mousemove', function (e) {
         player.y = e.clientY - arena.innerHeight() + playerDom.innerHeight();
-        player.draw();
+        if(player.y <= 300 && player.y >= 0){
+            player.draw();
+        } else if (player.y >= 0 && player.y >= 300){
+            player.y = 300;
+            player.draw();
+        } else {
+            player.y = 0;
+            player.draw();
+        }
+        
     });
 
 });
